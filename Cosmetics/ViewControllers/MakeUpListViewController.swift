@@ -9,7 +9,7 @@ import UIKit
 import Alamofire
 
 class MakeUpListViewController: UITableViewController {
-
+    
     @IBOutlet var activitiIndicator: UIActivityIndicatorView!
     
     private var makeUps = [MakeUpElement]()
@@ -89,24 +89,11 @@ class MakeUpListViewController: UITableViewController {
                 case .success(let value):
                     self.makeUps = MakeUpElement.getCosmetics(from: value)
                     self.tableView.reloadData()
-                   
+                    
                 case .failure(let error):
                     print(error)
                 }
-//                guard let statusCode = dataResponse.response?.statusCode else { return }
-//                print("Status code: \(statusCode)")
-//                if (200..<300).contains(statusCode) {
-//                    guard let value = dataResponse.value else { return }
-//                    print("Value: \(value)")
-//                } else {
-//                    guard let error = dataResponse.error else { return }
-//                    print(error)
-//                }
             }
-//        NetworkManager.shared.fetchMakeUp(from: url) { makeUps in
-//            self.makeUps = makeUps
-//            self.tableView.reloadData()
-//        }
     }
 }
 
