@@ -11,6 +11,7 @@ import Alamofire
 class MakeUpListViewController: UITableViewController {
     
     @IBOutlet var activitiIndicator: UIActivityIndicatorView!
+    @IBOutlet var progressView: UIProgressView!
     
     private var makeUps = [MakeUpElement]()
    
@@ -27,12 +28,9 @@ class MakeUpListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        activitiIndicator.startAnimating()
-        activitiIndicator.hidesWhenStopped = true
-        
+
+        progressView.isHidden = false
         tableView.rowHeight = 100
-        
         
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -40,6 +38,7 @@ class MakeUpListViewController: UITableViewController {
         navigationItem.searchController = searchController
         definesPresentationContext = true
         
+        downloadProgress()
         fetchMakeUP()
     }
     
@@ -49,6 +48,12 @@ class MakeUpListViewController: UITableViewController {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
+        }
+    }
+    
+    func downloadProgress() {
+        NetworkManager.onProgress = { progress in
+            self.progressView.progress = Float(progress)
         }
     }
     

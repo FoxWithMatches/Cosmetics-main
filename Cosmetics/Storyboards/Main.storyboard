@@ -16,10 +16,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" id="FQC-m1-mFz">
-                            <rect key="frame" x="0.0" y="229" width="320" height="44"/>
+                        <progressView key="tableFooterView" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.01" id="TNi-pX-254">
+                            <rect key="frame" x="0.0" y="229" width="320" height="4"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </activityIndicatorView>
+                            <color key="tintColor" red="0.66637806060000004" green="0.11681019500000001" blue="0.22360307130000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </progressView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="162" id="jGw-Sk-xka" customClass="CustomTableViewCell" customModule="Cosmetics" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44.5" width="320" height="162"/>
@@ -84,7 +85,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Cosmetics " leftItemsSupplementBackButton="YES" id="d1A-oT-hHE"/>
                     <connections>
-                        <outlet property="activitiIndicator" destination="FQC-m1-mFz" id="StR-uU-9rq"/>
+                        <outlet property="progressView" destination="TNi-pX-254" id="D4n-Ne-CDU"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="onW-gg-GVO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

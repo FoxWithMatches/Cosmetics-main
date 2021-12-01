@@ -8,7 +8,7 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
+    
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var brandLabel: UILabel!
     @IBOutlet var priceLabel: UILabel!
@@ -35,9 +35,7 @@ class DetailViewController: UIViewController {
         makeUpDescriptionLabel.text = description
         
         DispatchQueue.global().async {
-            let strigURL = self.dataMakeUp.imageLink
-            guard let url = URL(string: strigURL ?? "") else { return }
-            guard let imageData = try? Data(contentsOf: url) else { return }
+            guard let imageData = ImageManager.shared.fetchImage(from: self.dataMakeUp.imageLink) else { return }
             DispatchQueue.main.async {
                 self.imageView.image = UIImage(data: imageData)
                 self.activityIndicator.stopAnimating()

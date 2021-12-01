@@ -47,4 +47,3 @@ enum Link: String {
     case cosmetics = "https://makeup-api.herokuapp.com/api/v1/products.json"
 }
 
-//    typealias MakeUp = [MakeUpElement]
