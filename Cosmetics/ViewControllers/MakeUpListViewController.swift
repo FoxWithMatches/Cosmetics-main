@@ -14,7 +14,6 @@ class MakeUpListViewController: UITableViewController {
     @IBOutlet var progressView: UIProgressView!
     
     private var makeUps = [MakeUpElement]()
-   
     private var filtredMakeUps = [MakeUpElement]()
     private let searchController = UISearchController(searchResultsController: nil)
     private var searchBarIsEmpty: Bool {
@@ -28,7 +27,7 @@ class MakeUpListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         progressView.isHidden = false
         tableView.rowHeight = 100
         
@@ -42,18 +41,19 @@ class MakeUpListViewController: UITableViewController {
         fetchMakeUP()
     }
     
-    func fetchMakeUP() {
-        NetworkManager.fetchMakeUp(from: Link.cosmetics.rawValue) { (makeUps) in
-            self.makeUps = makeUps
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let indexPath = tableView.indexPathForSelectedRow {
+            guard let detailsVC = segue.destination as? DetailViewController else { return }
+            
+            var makeUp: MakeUpElement
+            
+            if isFiltring {
+                makeUp = filtredMakeUps[indexPath.row]
+            } else {
+                makeUp = makeUps[indexPath.row]
             }
-        }
-    }
-    
-    func downloadProgress() {
-        NetworkManager.onProgress = { progress in
-            self.progressView.progress = Float(progress)
+            
+            detailsVC.dataMakeUp = makeUp
         }
     }
     
@@ -81,22 +81,23 @@ class MakeUpListViewController: UITableViewController {
         return cell
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let indexPath = tableView.indexPathForSelectedRow {
-            guard let detailsVC = segue.destination as? DetailViewController else { return }
-
-            var makeUp: MakeUpElement
-
-            if isFiltring {
-                makeUp = filtredMakeUps[indexPath.row]
-            } else {
-                makeUp = makeUps[indexPath.row]
+    func fetchMakeUP() {
+        NetworkManager.fetchMakeUp(from: Link.cosmetics.rawValue) { (makeUps) in
+            self.makeUps = makeUps
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
             }
-
-            detailsVC.dataMakeUp = makeUp
+        }
+    }
+    
+    func downloadProgress() {
+        NetworkManager.onProgress = { progress in
+            self.progressView.progress = Float(progress)
         }
     }
 }
+
+// MARK: - Extension UISearch
 
 extension MakeUpListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
