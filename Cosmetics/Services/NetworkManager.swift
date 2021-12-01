@@ -17,7 +17,7 @@ class NetworkManager {
     
     private init() {}
     
-    static func fetchMakeUp(from url: String?, competion: @escaping (_ makeUp: [MakeUpElement]) -> ()) {
+    static func fetchMakeUp(from url: String?, completion: @escaping (_ makeUp: [MakeUpElement]) -> ()) {
         AF.request(Link.cosmetics.rawValue)
             .validate()
             .downloadProgress { (progress) in
@@ -28,8 +28,7 @@ class NetworkManager {
                 switch dataResponse.result {
                 case .success(let value):
                     let makeUps = MakeUpElement.getCosmetics(from: value)
-                    competion(makeUps)
-                    
+                    completion(makeUps)
                 case .failure(let error):
                     print(error)
                 }

@@ -21,14 +21,6 @@ struct MakeUpElement: Codable {
         case makeUpDescription = "description"
     }
     
-    init(name: String, brand: String, price: String, imageLink: String, makeUpDescription: String) {
-        self.name = name
-        self.brand = brand
-        self.price = price
-        self.imageLink = imageLink
-        self.makeUpDescription = makeUpDescription
-    }
-    
     init(cosmeticsData: [String: Any]) {
         name = cosmeticsData["name"] as? String
         brand = cosmeticsData["brand"] as? String
