@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 enum NetworkError: Error {
     case invalidURL
@@ -19,23 +20,19 @@ class NetworkManager {
     
     private init() {}
     
-    func fetchMakeUp(from url: String?, with completion: @escaping(MakeUpElement) -> Void) {
-        guard let url = URL(string: url ?? "") else { return }
-        
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data else {
-                print(error?.localizedDescription ?? "No eror description")
-                return
-            }
-            do {
-                let makeUpElement = try JSONDecoder().decode(MakeUpElement.self, from: data)
-                DispatchQueue.main.async {
-                    completion(makeUpElement)
+    static func fetchMakeUp(from url: String?, competion: @ escaping (_ makeUp: [MakeUpElement]) -> ()) {
+        AF.request(Link.cosmetics.rawValue)
+            .validate()
+            .responseJSON { dataResponse in
+                switch dataResponse.result {
+                case .success(let value):
+                    let makeUps = MakeUpElement.getCosmetics(from: value)
+                   competion(makeUps)
+                    
+                case .failure(let error):
+                    print(error)
                 }
-            } catch let error {
-                print(error)
             }
-        }.resume()
     }
 }
 

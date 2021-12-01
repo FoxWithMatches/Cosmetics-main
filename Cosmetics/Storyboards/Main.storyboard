@@ -73,7 +73,7 @@
                                     <outlet property="imageMakeUpView" destination="fvE-OB-hzl" id="QgA-qs-4WN"/>
                                     <outlet property="nameLabel" destination="BAq-67-dF7" id="pcC-QR-m3y"/>
                                     <outlet property="priceLabel" destination="a2J-ol-Hm5" id="q70-4f-Ege"/>
-                                    <segue destination="PZG-fc-ZBA" kind="show" id="x0u-rh-OdT"/>
+                                    <segue destination="PZG-fc-ZBA" kind="show" identifier="cell" id="x0u-rh-OdT"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

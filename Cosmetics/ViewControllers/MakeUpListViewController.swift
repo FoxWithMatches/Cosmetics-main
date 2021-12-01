@@ -13,6 +13,7 @@ class MakeUpListViewController: UITableViewController {
     @IBOutlet var activitiIndicator: UIActivityIndicatorView!
     
     private var makeUps = [MakeUpElement]()
+   
     private var filtredMakeUps = [MakeUpElement]()
     private let searchController = UISearchController(searchResultsController: nil)
     private var searchBarIsEmpty: Bool {
@@ -32,13 +33,23 @@ class MakeUpListViewController: UITableViewController {
         
         tableView.rowHeight = 100
         
-        fetchMakeUp(from: Link.cosmetics.rawValue)
         
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search"
         navigationItem.searchController = searchController
         definesPresentationContext = true
+        
+        fetchMakeUP()
+    }
+    
+    func fetchMakeUP() {
+        NetworkManager.fetchMakeUp(from: Link.cosmetics.rawValue) { (makeUps) in
+            self.makeUps = makeUps
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
     
     // MARK: - Table view data source
@@ -68,32 +79,17 @@ class MakeUpListViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let indexPath = tableView.indexPathForSelectedRow {
             guard let detailsVC = segue.destination as? DetailViewController else { return }
-            
+
             var makeUp: MakeUpElement
-            
+
             if isFiltring {
                 makeUp = filtredMakeUps[indexPath.row]
             } else {
                 makeUp = makeUps[indexPath.row]
             }
-            
+
             detailsVC.dataMakeUp = makeUp
         }
-    }
-    
-    private func fetchMakeUp(from url: String?) {
-        AF.request(Link.cosmetics.rawValue)
-            .validate()
-            .responseJSON { dataResponse in
-                switch dataResponse.result {
-                case .success(let value):
-                    self.makeUps = MakeUpElement.getCosmetics(from: value)
-                    self.tableView.reloadData()
-                    
-                case .failure(let error):
-                    print(error)
-                }
-            }
     }
 }
 
