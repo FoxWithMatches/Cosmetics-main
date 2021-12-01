@@ -129,15 +129,17 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hkP-XV-2dj">
-                                <rect key="frame" x="40" y="309.5" width="240" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="NK2-M4-iXj">
                                 <rect key="frame" x="150" y="165" width="20" height="20"/>
                             </activityIndicatorView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bBM-nf-QFY">
+                                <rect key="frame" x="40" y="305.5" width="240" height="242.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hMz-sJ-v05"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -146,13 +148,14 @@
                             <constraint firstItem="kgM-sK-1n3" firstAttribute="top" secondItem="hMz-sJ-v05" secondAttribute="top" constant="20" id="7Lb-tZ-d9N"/>
                             <constraint firstItem="hhE-ze-62L" firstAttribute="leading" secondItem="hMz-sJ-v05" secondAttribute="leading" constant="40" id="AZM-rA-3QF"/>
                             <constraint firstItem="kgM-sK-1n3" firstAttribute="centerX" secondItem="ECf-9u-7eW" secondAttribute="centerX" id="Cgw-w7-V2J"/>
+                            <constraint firstItem="hMz-sJ-v05" firstAttribute="bottom" secondItem="bBM-nf-QFY" secondAttribute="bottom" constant="20" id="DU1-Xc-2GH"/>
+                            <constraint firstItem="bBM-nf-QFY" firstAttribute="leading" secondItem="hMz-sJ-v05" secondAttribute="leading" constant="40" id="Dud-h3-E6O"/>
+                            <constraint firstItem="bBM-nf-QFY" firstAttribute="top" secondItem="hhE-ze-62L" secondAttribute="bottom" constant="16" id="Vi3-Ct-ejU"/>
                             <constraint firstItem="hMz-sJ-v05" firstAttribute="trailing" secondItem="kgM-sK-1n3" secondAttribute="trailing" constant="40" id="fjD-sl-YuE"/>
-                            <constraint firstItem="hkP-XV-2dj" firstAttribute="leading" secondItem="hMz-sJ-v05" secondAttribute="leading" constant="40" id="kLO-PE-Mza"/>
+                            <constraint firstItem="hMz-sJ-v05" firstAttribute="trailing" secondItem="bBM-nf-QFY" secondAttribute="trailing" constant="40" id="hzW-zi-dHB"/>
                             <constraint firstItem="kgM-sK-1n3" firstAttribute="leading" secondItem="hMz-sJ-v05" secondAttribute="leading" constant="40" id="mGe-oY-fca"/>
                             <constraint firstItem="NK2-M4-iXj" firstAttribute="centerY" secondItem="kgM-sK-1n3" secondAttribute="centerY" id="pKS-ft-DSD"/>
                             <constraint firstItem="hhE-ze-62L" firstAttribute="top" secondItem="kgM-sK-1n3" secondAttribute="bottom" constant="30" id="pQE-u1-tlA"/>
-                            <constraint firstItem="hkP-XV-2dj" firstAttribute="top" secondItem="hhE-ze-62L" secondAttribute="bottom" constant="20" id="rdK-vg-one"/>
-                            <constraint firstItem="hMz-sJ-v05" firstAttribute="trailing" secondItem="hkP-XV-2dj" secondAttribute="trailing" constant="40" id="w1s-HK-2lk"/>
                             <constraint firstItem="hMz-sJ-v05" firstAttribute="trailing" secondItem="hhE-ze-62L" secondAttribute="trailing" constant="40" id="zlB-Hh-JJK"/>
                         </constraints>
                     </view>
@@ -161,13 +164,13 @@
                         <outlet property="activityIndicator" destination="NK2-M4-iXj" id="TDb-Xh-Q53"/>
                         <outlet property="brandLabel" destination="aot-Nx-LFj" id="GYw-77-n4Q"/>
                         <outlet property="imageView" destination="kgM-sK-1n3" id="RRO-Jn-WZQ"/>
-                        <outlet property="makeUpDescriptionLabel" destination="hkP-XV-2dj" id="3fe-FZ-2Wf"/>
+                        <outlet property="makeUpDescriptionLabel" destination="bBM-nf-QFY" id="6w5-gT-NTA"/>
                         <outlet property="priceLabel" destination="53V-J7-r08" id="46W-Cp-PTn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="od1-R1-yUX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1294" y="68"/>
+            <point key="canvasLocation" x="1293.75" y="67.605633802816897"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7G7-gA-wcQ">
@@ -188,6 +191,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

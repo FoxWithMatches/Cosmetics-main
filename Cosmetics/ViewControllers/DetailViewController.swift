@@ -12,7 +12,7 @@ class DetailViewController: UIViewController {
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var brandLabel: UILabel!
     @IBOutlet var priceLabel: UILabel!
-    @IBOutlet var makeUpDescriptionLabel: UILabel!
+    @IBOutlet var makeUpDescriptionLabel: UITextView!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     var dataMakeUp: MakeUpElement!

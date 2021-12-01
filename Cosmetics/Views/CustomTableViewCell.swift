@@ -19,7 +19,7 @@ class CustomTableViewCell: UITableViewCell {
         guard let brand = makeUp.brand?.capitalized else { return }
         brandLabel.text = brand
         nameLabel.text = makeUp.name
-        priceLabel.text = "Цена: \(makeUp.price ?? "0") $"
+        priceLabel.text = "\(makeUp.price ?? "0") $"
         
         DispatchQueue.global().async {
             let strigURL = makeUp.imageLink
